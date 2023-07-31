@@ -1,9 +1,9 @@
-= new technology -- 
+= AsciiDoctor
 :backend: asciidoctor
 :github-flavored:  // enables GitHub-specific features like tables, task lists, and fenced code blocks
 ifndef::env-github[:icons: font]
 ifdef::env-github[]
-// Naughty Waco Temps
+ // Naughty Waco Temps
 :note-caption: :paperclip:
 :tip-caption: :bulb:
 :warning-caption: :warning:
@@ -15,17 +15,271 @@ endif::[]
 // :sectnums: // gets ToC sections to be numbered
 :sectnumlevels: 3 // max # of numbering levels
 
-== Discover
+Asciidoctor is a text processor for parsing AsciiDoc® into a document model and converting it to output formats such as HTML 5, DocBook 5, manual pages, PDF, EPUB 3, and other formats.
+
+* Mostly used in these github.com pages to format the README.adoc file in each respository
+* The automatic outline function it possesses makes it more preferable than Markdown
+
+
+
+== Selecting a lightweight markup language
+
+Mainly to rapidly key-in notes that include text, pics, weblinks,
+
+but also tables, cross-references (sharing the same xml:id attribute), footnotes, embedded videos
+
+and also description lists, admonitions (note, tip, important, warning, caution) and table of contents.
+
+A cool tip: Github render as html on account head page the https://github/account/account/README.md file. README.adoc will work as well.
+
+AsciiDoc is presented as superior by many, in the context of this page mainly for its Table Of Contents, toc. It is also presented as simpler to grasp. Here is the rationale: https://asciidoctor.org/docs/user-manual/ #graduating-to-asciidoc
+
+Markdown & GFM, Github Flavored Markdown: the de facto reference, mainly for Github and Jupyter notebooks.
+
+Rendering on linux Mint:
+`sudo apt install retext`
+`retext --preview filename.md`
+
+HackMD, mainly for collaborative work on github. Can draw simple UML diagrams (workflows) and math formulas.
+
+
+== Explore AsciiDoctor
+
+Install on VSCode Ctrl-Shift X Asciidoc
+
+AsciiDoc Syntax Quick Reference: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+
+=== Normal paragraphs
+
+Paragraph
+Paragraphs don't require special markup in AsciiDoc.
+A paragraph is defined by one or more consecutive lines of text.
+Line breaks within a paragraph are not displayed.
+
+Leave at least one empty line to begin a new paragraph.
+
+=== Literal paragraphs
+
+A normal paragraph.
+
+ A literal paragraph.
+ One or more consecutive lines indented by at least one space.
+
+
+ The text is shown in a fixed-width (typically monospace) font.
+     The lines are preformatted (i.e., as formatted in the source).
+ Spaces and newlines,
+ like the ones in this sentence,
+ are preserved.
+ Other formating conventions such as *_`` ... won't work.
+
+CAUTION: Careful, as this indentation would be erased by a text formatter not specific to asciidoc.
+
+=== Hardbreaks
+Roses are red, +
+violets are blue.
+
+[%hardbreaks]
+A ruby is red.
+Java is black.
+
+No more
+hardbreaks. (These were on 2 lines in the adoc)
+
+=== Lead paragraph
+[.lead]
+This text will be styled as a lead paragraph (i.e., larger font).
+
+This paragraph will not be.
+
+=== Constrained bold, italic, and monospace
+It has *strong* significance to me.
+
+I _cannot_ stress this enough.
+
+Type `OK` to accept. Monospace shows in red. +
+Type `..` to a.....
+
+That *_really_* has to go.
+
+Can't pick one? Let's use them `*_all_*`.
+
+=== Unconstrained bold, italic, and monospace
+**C**reate, **R**ead, **U**pdate, and **D**elete (CRUD)
+
+That's fan__freakin__tastic!
+
+Don't pass generic ``Object``s to methods that accept ``String``s!
+
+It was Beatle``**__mania__**``!
+
+=== Highlight, underline, strikethrough, and custom role
+Constrained needs only one hash to #highlight#.
+
+##Unconstrain##ed requires two hash ##sign##s.
+
+Where did all the [.underline]#cores# go?
+
+We need [.line-through]#ten# twenty VMs.
+
+A [.myrole]#custom role# must be fulfilled by the theme.
+
+=== Unordered list
+An empty line is required before and after a list to separate it from other blocks. You can force two adjacent lists apart by adding an empty attribute list (i.e., []) above the second list or by inserting an empty line followed by a line comment after the first list. If you use a line comment, the convention is to use //- to provide a hint to other authors that it’s serving as a list divider.
+
+* 1rst List 1rst item
+** Nested list item
+*** Deeper nested list item
+* 1rst List 2nd item
+ ** Another nested list item
+* 1rst List 3rd item
+//-
+* 2nd List item
+** Nested list item
+*** Deeper nested list item
+[]
+* 2nd List 2nd item
+ ** Another nested list item
+* List item
+
+=== Literal block
+....
+error: 1954 Forbidden search
+absolutely fatal: operation lost in the dodecahedron of doom
+
+Would you like to try again? y/n
+....
+
+=== Listing block with title
+.Gemfile.lock
+----
+GEM
+  remote: https://rubygems.org/
+  specs:
+    asciidoctor (2.0.15)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  asciidoctor (~> 2.0.15)
+----
+
+=== Source block with title and syntax highlighting
+.Some Ruby code
+[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----
+
+.Some bash code
+[source,bash]
+----
+#!/usr/bin/env bash
+
+set -euo pipefail # comment
+
+echo  "Hello World!"
+----
+
+.Some Python code
+[source,python]
+----
+#!/usr/bin/env python3
+
+pi = 3.14
+
+print(f'{pi = : %.2f}') # comment
+----
+
+
+
+
+
+=== Admonition
+
+NOTE: NOTE: An admonition paragraph draws the reader's attention to auxiliary information.
+
+TIP: TIP: $ sudo apt install fonts-font-awesome # to render icons
+
+WARNING: WARNING: Watch out for...
+
+CAUTION: CAUTION: Ensure that...
+
+IMPORTANT: IMPORTANT: Don't forget...
+
+=== Inline icons
+
+icon:tags[] : Represents tags or keywords. +
+icon:warning[] : Represents a warning or caution. +
+icon:info[] : Represents information or details. +
+icon:check[] : Represents a check or success. +
+icon:times[] : Represents a cross or failure. +
+icon:thumbs-up[] : Represents approval or positive feedback. +
+icon:thumbs-down[] : Represents disapproval or negative feedback. +
+icon:question-circle[] : Represents a question or uncertainty. +
 
 
 == Learn
+Asciidoctor Documentation Site: https://docs.asciidoctor.org/
 
+AsciiDoc Language Documentation: https://docs.asciidoctor.org/asciidoc/latest/
 
 == Cultivate
 
-
-== Develop & Deploy, Master
-
+== Deploy
 
 == Todo
+Find a way to format a adoc under VSCode, preferrably with "lkrms.inifmt"
 
+=== AsciiDoctor tutorial
+
+some examples:
+https://github.com/asciidoctor/asciidoctor/blob/master/README.adoc
+https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/README.adoc
+
+https://AsciiDoctor.org/docs/asciidoc-syntax-quick-reference/
+
+=== Editing asciidoc
+
+==== Cheat sheet
+
+===== Paragraphs
+
+====== Normal
+
+Newlines within a Normal paragraph are not displayed. Neither are spaces: there are 4 spaces between a and b.
+
+====== Literal
+
+ A paragraph offset by at least one space becomes literal. Even if not rendered well in VSCode, it will be in an html file.
+
+The text is shown in a fixed-width font.
+Spaces and newlines,
+like the ones between a and b,
+are preserved.
+are preserved.
+
+====== next
+
+==== Advanced
+
+===== Todo
+Review https://plugins.jetbrains.com/plugin/7391-asciidoc/reviews
+
+==== May be needed one day
+
+=== Rendering AsciiDoctor on linux
+`sudo apt install AsciiDoctor`
+`AsciiDoctor filename.adoc` will create filename.html in the same directory
+
+=== Convert AsciiDoc to PDF
+Simple: print filename.html to pdf. Resulting pdf will have no TOC.
+
+Direct conversion: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+
+Interesting, also because it unveils PDF'specificities: https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc

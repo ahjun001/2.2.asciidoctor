@@ -1,0 +1,79 @@
+= cheat-sheet AsciiDoctor
+// pdf will be different from js version
+:doctype: book
+:icons: font
+
+[%hardbreaks]
+note-caption: {note-caption}
+noc: {noc}
+doctype: {doctype}
+
+== References
+
+== VSCode default snippets
+ Ctrl+Shift+P / Insert Snippet
+
+=== Insert attribute
+ :attribute: value
+
+=== Insert checklist
+ * [ ] first
+ * [ ] second
+ * [ ] third
+
+=== Insert doctype
+ :doctype: article
+ :doctype: book
+ :doctype: manpage
+ :doctype: inline
+
+=== Insert example
+ [attribute]
+ ====
+ text
+ ====
+ 
+[example]
+====
+ text
+====
+ 
+=== Insert footnote
+ footnote:[note]
+
+[example]
+====
+footnote:[My note]
+
+Will show at the end as [1] My note
+====
+
+=== Insert footnote with label
+ footnote:label[My other note]
+
+:label: 'My label'
+footnote:['*', My other note]
+
+=== Insert header
+ = README
+ Author <author@email.com>
+ version, 2021-02-02: remark
+ :attributes:
+
+=== Insert heading
+ = Heading Title
+ Then Down to select which level
+
+=== Insert image
+ image::path[alt]
+
+=== Tricks
+
+manual line +
+break
+
+Create snippets: File / Preferences / User Snippets
+
+=== References
+AsciiDoc syntax quick reference: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+
