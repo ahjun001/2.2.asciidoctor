@@ -1,15 +1,10 @@
 = Rendering blank lines
-:backend: asciidoctor
-:github-flavored:  // enables GitHub-specific features like tables, task lists, and fenced code blocks
 
 1 blank line(s)
-// //
+[empy]
 1 blank line(s)
 
 2 blank line(s)
-/// ///
+[empy]
+[empy]
 2 blank line(s)
-
-3 blank line(s)
-//// ////
-3 blank line(s)
