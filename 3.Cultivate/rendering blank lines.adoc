@@ -2,17 +2,14 @@
 :backend: asciidoctor
 :github-flavored:  // enables GitHub-specific features like tables, task lists, and fenced code blocks
 
-1 attempt
-<br>
-<br>
-1 attempt
+1 blank line(s)
+// //
+1 blank line(s)
 
-2 attempt
-pass[]
-pass[]
-2 attempt
+2 blank line(s)
+/// ///
+2 blank line(s)
 
-3 attempt
-+
-+
-3 attempt
+3 blank line(s)
+//// ////
+3 blank line(s)
